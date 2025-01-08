@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <style>
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes slideIn {
+        from { transform: translateX(20px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+      .message1 { animation: slideIn 0.5s ease-out both; animation-delay: 0s; }
+      .message2 { animation: slideIn 0.5s ease-out both; animation-delay: 1s; }
+      .message3 { animation: slideIn 0.5s ease-out both; animation-delay: 2s; }
+      .message4 { animation: slideIn 0.5s ease-out both; animation-delay: 3s; }
+      .message5 { animation: slideIn 0.5s ease-out both; animation-delay: 4s; }
+      .fade-in { animation: fadeIn 0.5s ease-out both; }
+    </style>
+  </defs>
+
+  <!-- Background Panels -->
+  <rect width="800" height="400" fill="#f0f0f0"/>
+  <rect x="20" y="20" width="360" height="360" rx="10" fill="white" stroke="#ddd"/>
+  <rect x="420" y="20" width="360" height="360" rx="10" fill="white" stroke="#ddd"/>
+
+  <!-- Panel Labels -->
+  <text x="30" y="45" fill="#666" font-family="Arial" font-size="14">User Interface</text>
+  <text x="430" y="45" fill="#666" font-family="Arial" font-size="14">Admin Dashboard</text>
+
+  <!-- User Interface Content -->
+  <g transform="translate(30, 60)">
+    <!-- User Query -->
+    <g class="message1">
+      <rect x="0" y="0" width="240" height="40" rx="20" fill="#e1e1e1"/>
+      <text x="15" y="25" font-family="Arial" font-size="14">Show me total revenue by month</text>
+    </g>
+
+    <!-- SQL Execution -->
+    <g class="message2">
+      <rect x="0" y="50" width="320" height="100" rx="5" fill="#e6ffe6"/>
+      <text x="10" y="70" font-family="monospace" font-size="12" fill="#006600">
+        <tspan x="10" y="70">SELECT DATE_FORMAT(order_date, '%Y-%m')</tspan>
+        <tspan x="10" y="90">AS month, SUM(price) AS revenue</tspan>
+        <tspan x="10" y="110">FROM orders GROUP BY month</tspan>
+        <tspan x="10" y="130">Success: Results displayed below</tspan>
+      </text>
+    </g>
+
+    <!-- User Flag Action -->
+    <g class="message3">
+      <rect x="0" y="160" width="320" height="80" rx="5" fill="#fff3e0"/>
+      <text x="10" y="180" font-family="Arial" font-size="14" fill="#663c00">Warning: Flag as Incorrect</text>
+      <text x="10" y="205" font-family="Arial" font-size="12" fill="#663c00">Reason: Should include tax in revenue</text>
+      <text x="10" y="225" font-family="Arial" font-size="12" fill="#663c00">Status: Flagged - Admin Notified</text>
+    </g>
+  </g>
+
+  <!-- Admin Dashboard Content -->
+  <g transform="translate(430, 60)">
+    <!-- Alert Notification -->
+    <g class="message4">
+      <rect x="0" y="0" width="340" height="140" rx="5" fill="#fff3e0"/>
+      <text x="10" y="25" font-family="Arial" font-size="14" fill="#663c00">Query Flagged by User</text>
+      <text x="10" y="50" font-family="monospace" font-size="12" fill="#663c00">
+        <tspan x="10" y="50">Current Query:</tspan>
+        <tspan x="10" y="70">SELECT DATE_FORMAT(order_date, '%Y-%m')</tspan>
+        <tspan x="10" y="90">AS month, SUM(price) AS revenue</tspan>
+        <tspan x="10" y="110">FROM orders GROUP BY month</tspan>
+        <tspan x="10" y="130">Issue: Tax not included in revenue calc</tspan>
+      </text>
+    </g>
+
+    <!-- Admin Action -->
+    <g class="message5">
+      <rect x="0" y="150" width="340" height="140" rx="5" fill="#e3f2fd"/>
+      <text x="10" y="175" font-family="Arial" font-size="14" fill="#0d47a1">Correction Required</text>
+      <text x="10" y="200" font-family="monospace" font-size="12" fill="#0d47a1">
+        <tspan x="10" y="200">Updated Query:</tspan>
+        <tspan x="10" y="220">SELECT DATE_FORMAT(order_date, '%Y-%m')</tspan>
+        <tspan x="10" y="240">AS month, SUM(price + tax) AS revenue</tspan>
+        <tspan x="10" y="260">FROM orders GROUP BY month</tspan>
+      </text>
+    </g>
+  </g>
+</svg>
