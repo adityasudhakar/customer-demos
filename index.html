@@ -1,100 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animation Demos</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .animation-card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .animation-container {
-            width: 100%;
-            min-height: 300px; /* Prevents layout shift */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .animation-container object {
-            width: 100%;
-            height: auto;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .animation-container object.loaded {
-            opacity: 1;
-        }
-        .description {
-            margin-top: 20px;
-            line-height: 1.5;
-            color: #333;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanna Enterprise Demos</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+  </style>
 </head>
-<body>
-    <div class="container">
-        <!-- First Animation -->
-        <div class="animation-card">
-            <h2>Query Flow Example</h2>
-            <div class="animation-container">
-                <object 
-                    class="lazy-animation"
-                    data-src="animation1.svg"
-                    type="image/svg+xml">
-                </object>
-            </div>
-            <div class="description">
-                This animation shows the flow of a query from user input to admin review.
-            </div>
+<body class="bg-gray-100 min-h-screen">
+  <div class="container mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl font-bold text-center mb-12 text-gray-800">Vanna Enterprise Demos</h1>
+      
+      <div class="bg-white rounded-lg shadow-lg p-6 mb-8 animate-fade-in">
+        <div class="aspect-w-16 aspect-h-9">
+          <img src="animation1.svg" alt="Animation demonstrating feature" class="w-full h-full object-cover rounded"/>
         </div>
+        <p class="mt-4 text-gray-700 text-lg leading-relaxed">
+          The user is able to alert an admin about an incorrect response. This prevents user frustration that they've noticed an error but don't have a way to fix it.
+        </p>
+      </div>
 
-        <!-- You can copy this block for each additional animation -->
-        <div class="animation-card">
-            <h2>Another Animation</h2>
-            <div class="animation-container">
-                <object 
-                    class="lazy-animation"
-                    data-src="animation2.svg"
-                    type="image/svg+xml">
-                </object>
-            </div>
-            <div class="description">
-                Description for the second animation.
-            </div>
+      <div class="bg-white rounded-lg shadow-lg p-6 animate-fade-in">
+        <div class="aspect-w-16 aspect-h-9">
+          <img src="animation2.svg" alt="Animation showing training feature" class="w-full h-full object-cover rounded"/>
         </div>
+        <p class="mt-4 text-gray-700 text-lg leading-relaxed">
+          The user is able to train the model if they like the response they've received. This helps generate the exact same response to the question every future time. It prevents the frustration that if starting from scratch, the LLM could generate a different response.
+        </p>
+      </div>
     </div>
-
-    <script>
-        // This handles lazy loading
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const obj = entry.target;
-                    obj.data = obj.dataset.src;  // Load the real SVG
-                    obj.classList.add('loaded');  // Fade it in
-                    observer.unobserve(obj);  // Stop watching this element
-                }
-            });
-        });
-
-        // Start observing all animation containers
-        document.querySelectorAll('.lazy-animation').forEach(animation => {
-            observer.observe(animation);
-        });
-    </script>
+  </div>
 </body>
 </html>
