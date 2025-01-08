@@ -3,70 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Query Flow Animation</title>
+    <title>Animation Demos</title>
     <style>
         body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .animation-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .animation-container {
+            width: 100%;
+            min-height: 300px; /* Prevents layout shift */
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background: #f5f5f5;
-            font-family: Arial, sans-serif;
-            padding: 16px;
-            box-sizing: border-box;
         }
-        .container {
+        .animation-container object {
             width: 100%;
-            max-width: 800px;
-            background: white;
-            border-radius: 10px;
-            padding: 16px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: auto;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
-        .title {
-            text-align: center;
+        .animation-container object.loaded {
+            opacity: 1;
+        }
+        .description {
+            margin-top: 20px;
+            line-height: 1.5;
             color: #333;
-            margin-bottom: 16px;
-            font-size: clamp(1.2rem, 4vw, 1.8rem);
-            word-wrap: break-word;
-        }
-        .svg-container {
-            width: 100%;
-            height: 0;
-            padding-bottom: 50%; /* Maintains 2:1 aspect ratio */
-            position: relative;
-            overflow: hidden;
-        }
-        .svg-container object {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        /* Media query for very small screens */
-        @media (max-width: 480px) {
-            body {
-                padding: 8px;
-            }
-            .container {
-                padding: 12px;
-            }
-            .title {
-                margin-bottom: 12px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="title">User flags query to alert Admin</h1>
-        <div class="svg-container">
-            <object data="animation.svg" type="image/svg+xml">
-                Your browser does not support SVG
-            </object>
+        <!-- First Animation -->
+        <div class="animation-card">
+            <h2>Query Flow Example</h2>
+            <div class="animation-container">
+                <object 
+                    class="lazy-animation"
+                    data-src="animation1.svg"
+                    type="image/svg+xml">
+                </object>
+            </div>
+            <div class="description">
+                This animation shows the flow of a query from user input to admin review.
+            </div>
+        </div>
+
+        <!-- You can copy this block for each additional animation -->
+        <div class="animation-card">
+            <h2>Another Animation</h2>
+            <div class="animation-container">
+                <object 
+                    class="lazy-animation"
+                    data-src="animation2.svg"
+                    type="image/svg+xml">
+                </object>
+            </div>
+            <div class="description">
+                Description for the second animation.
+            </div>
         </div>
     </div>
+
+    <script>
+        // This handles lazy loading
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const obj = entry.target;
+                    obj.data = obj.dataset.src;  // Load the real SVG
+                    obj.classList.add('loaded');  // Fade it in
+                    observer.unobserve(obj);  // Stop watching this element
+                }
+            });
+        });
+
+        // Start observing all animation containers
+        document.querySelectorAll('.lazy-animation').forEach(animation => {
+            observer.observe(animation);
+        });
+    </script>
 </body>
 </html>
