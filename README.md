@@ -1,2 +1,2 @@
-# query-flag-admin-alert
-demo to show how a query flag and admin alert would work
+# customer demos
+demos to show how Vanna Enterprise deploys a suite of tactics and best practices to go from POC to Production
