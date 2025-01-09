@@ -31,14 +31,14 @@
   </defs>
 
   <!-- Background -->
-  <rect width="800" height="750" fill="#f0f0f0"/>
+  <rect width="800" height="720" fill="#f0f0f0"/>
   
   <!-- Left Panel -->
-  <rect x="20" y="20" width="360" height="720" rx="10" fill="white" stroke="#ddd"/>
+  <rect x="20" y="20" width="360" height="680" rx="10" fill="white" stroke="#ddd"/>
   <text x="30" y="45" fill="#666" class="chat-text" font-size="14" font-weight="600">Without clarification</text>
   
   <!-- Right Panel -->
-  <rect x="420" y="20" width="360" height="720" rx="10" fill="white" stroke="#ddd"/>
+  <rect x="420" y="20" width="360" height="680" rx="10" fill="white" stroke="#ddd"/>
   <text x="430" y="45" fill="#666" class="chat-text" font-size="14" font-weight="600">With clarification</text>
 
   <!-- Left Panel Content -->
