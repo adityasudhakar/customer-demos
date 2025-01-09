@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vanna Enterprise Demos</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     @keyframes fadeIn {
       from { opacity: 0; }
@@ -13,27 +14,32 @@
     .animate-fade-in {
       animation: fadeIn 0.5s ease-in;
     }
+    .mono-font {
+      font-family: 'Roboto Mono', monospace;
+    }
   </style>
 </head>
 <body class="bg-gray-100 min-h-screen">
-  <div class="container mx-auto px-4 py-8">
+  <div class="container mx-auto px-4 py-12">
     <div class="max-w-4xl mx-auto">
-      <h1 class="text-4xl font-bold text-center mb-12 text-gray-800">Vanna Enterprise Demos</h1>
+      <h1 class="text-4xl font-bold text-center mb-16 text-gray-800 mono-font">Vanna Enterprise Demos</h1>
       
-      <div class="bg-white rounded-lg shadow-lg p-6 mb-8 animate-fade-in">
+      <div class="bg-white rounded-lg shadow-lg p-8 mb-16 animate-fade-in">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">Error Reporting Feature</h2>
         <div class="aspect-w-16 aspect-h-9">
-          <img src="animation.svg" alt="Animation demonstrating feature" class="w-full h-full object-cover rounded"/>
+          <img src="animation1.svg" alt="Animation demonstrating feature" class="w-full h-full object-cover rounded"/>
         </div>
-        <p class="mt-4 text-gray-700 text-lg leading-relaxed">
+        <p class="mt-6 text-gray-700 text-lg leading-relaxed text-center mono-font">
           The user is able to alert an admin about an incorrect response. This prevents user frustration that they've noticed an error but don't have a way to fix it.
         </p>
       </div>
 
-      <div class="bg-white rounded-lg shadow-lg p-6 animate-fade-in">
+      <div class="bg-white rounded-lg shadow-lg p-8 animate-fade-in">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">Model Training Feature</h2>
         <div class="aspect-w-16 aspect-h-9">
-          <img src="animation1.svg" alt="Animation showing training feature" class="w-full h-full object-cover rounded"/>
+          <img src="animation2.svg" alt="Animation showing training feature" class="w-full h-full object-cover rounded"/>
         </div>
-        <p class="mt-4 text-gray-700 text-lg leading-relaxed">
+        <p class="mt-6 text-gray-700 text-lg leading-relaxed text-center mono-font">
           The user is able to train the model if they like the response they've received. This helps generate the exact same response to the question every future time. It prevents the frustration that if starting from scratch, the LLM could generate a different response.
         </p>
       </div>
